@@ -96,7 +96,7 @@
 变量shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。后者有两种方法：  
 12currentFolder=`pwd`currentFolder=$(pwd)
 输入输出标准IOecho可类比c语言里面的printf，可以直">
-<meta property="og:updated_time" content="2016-12-02T09:05:56.000Z">
+<meta property="og:updated_time" content="2016-12-02T09:13:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bash常用总结">
 <meta name="twitter:description" content="之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。
@@ -357,6 +357,7 @@
 <p><code>&gt;</code> 表示输出到文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">man cat &gt; cat_help.txt</div></pre></td></tr></table></figure>
 <p>命令两侧的内容可以紧挨符号，而不需空格。</p>
+<a id="more"></a>
 <h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p><code>|</code> 将前一个命令的输出作为下一个命令的输入<br>这里的输入输出指的都是标准输入stdin和标准输出stdout<br>打印有关safari的所有线程。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux|grep safari</div></pre></td></tr></table></figure>
 <h1 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h1><h2 id="获得长度"><a href="#获得长度" class="headerlink" title="获得长度"></a>获得长度</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">str=&quot;gallen&quot;</div><div class="line">echo $&#123;#str&#125;</div><div class="line">expr length $str</div></pre></td></tr></table></figure>
