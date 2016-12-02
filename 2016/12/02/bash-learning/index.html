@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="bash," />
 
 
 
@@ -84,15 +84,25 @@
 
 
 
-<meta name="description" content="stay foolish, stay hungry.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ustc橘子皮的博客">
-<meta property="og:url" content="http://gallenvara.cc/index.html">
+<meta name="description" content="之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。
+变量shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。后者有两种方法：  
+12currentFolder=`pwd`currentFolder=$(pwd)
+输入输出标准IOecho可类比c语言里面的printf，可以直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bash常用总结">
+<meta property="og:url" content="http://gallenvara.cc/2016/12/02/bash-learning/index.html">
 <meta property="og:site_name" content="ustc橘子皮的博客">
-<meta property="og:description" content="stay foolish, stay hungry.">
+<meta property="og:description" content="之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。
+变量shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。后者有两种方法：  
+12currentFolder=`pwd`currentFolder=$(pwd)
+输入输出标准IOecho可类比c语言里面的printf，可以直">
+<meta property="og:updated_time" content="2016-12-02T09:05:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ustc橘子皮的博客">
-<meta name="twitter:description" content="stay foolish, stay hungry.">
+<meta name="twitter:title" content="bash常用总结">
+<meta name="twitter:description" content="之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。
+变量shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。后者有两种方法：  
+12currentFolder=`pwd`currentFolder=$(pwd)
+输入输出标准IOecho可类比c语言里面的printf，可以直">
 
 
 
@@ -120,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://gallenvara.cc/"/>
+  <link rel="canonical" href="http://gallenvara.cc/2016/12/02/bash-learning/"/>
 
 
 
 
 
-  <title> ustc橘子皮的博客 </title>
+  <title> bash常用总结 | ustc橘子皮的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,9 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -283,10 +291,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/12/02/bash-learning/" itemprop="url">
-                  bash常用总结
-                </a>
+                bash常用总结
               
             
           </h1>
@@ -335,9 +340,7 @@
       
 
       
-        
-          
-            <p>之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。</p>
+        <p>之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。</p>
 <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。<br>后者有两种方法：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">currentFolder=`pwd`</div><div class="line">currentFolder=$(pwd)</div></pre></td></tr></table></figure>
 <h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><h2 id="标准IO"><a href="#标准IO" class="headerlink" title="标准IO"></a>标准IO</h2><h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>可类比c语言里面的printf，可以直接跟一条字符串。</p>
@@ -386,154 +389,62 @@
 <p>tips:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$  shell本身的PID</div><div class="line">$?  shell最后运行的返回值</div><div class="line">$#  添加到shell的参数个数</div><div class="line">$0  shell本身的文件名</div><div class="line">$1~$n  添加到shell的各参数值</div><div class="line">/dev/null  代表空设备文件</div></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://gallenvara.cc/2016/12/02/sea-and-boat/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="gallenvara">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/12931563.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ustc橘子皮的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ustc橘子皮的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/02/sea-and-boat/" itemprop="url">
-                  一只船
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T04:12:03+08:00">
-                2016-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/bash/" rel="tag"># bash</a>
           
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>一只船孤独地航行在海上<br>它既不寻求幸福，<br>也不逃避幸福。<br>它只是向前航行，<br>底下是沉静碧蓝的大海，<br>而头顶是金色的太阳。<br>将要直面的，<br>与已成过往的，<br>较之深埋于它内心的皆为微沫。</p>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/02/sea-and-boat/" rel="next" title="一只船">
+                <i class="fa fa-chevron-left"></i> 一只船
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -541,6 +452,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -560,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/12931563.png"
@@ -607,6 +531,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出"><span class="nav-number">2.</span> <span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准IO"><span class="nav-number">2.1.</span> <span class="nav-text">标准IO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#echo"><span class="nav-number">2.1.1.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read"><span class="nav-number">2.1.2.</span> <span class="nav-text">read</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向"><span class="nav-number">2.2.</span> <span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道"><span class="nav-number">2.3.</span> <span class="nav-text">管道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串处理"><span class="nav-number">3.</span> <span class="nav-text">字符串处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获得长度"><span class="nav-number">3.1.</span> <span class="nav-text">获得长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找子串的位置"><span class="nav-number">3.2.</span> <span class="nav-text">查找子串的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串替换"><span class="nav-number">3.3.</span> <span class="nav-text">字符串替换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算"><span class="nav-number">4.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text">$[]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expr"><span class="nav-number">4.2.</span> <span class="nav-text">expr ``</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">4.3.</span> <span class="nav-text">$(())</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自增自减"><span class="nav-number">4.4.</span> <span class="nav-text">自增自减</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环"><span class="nav-number">5.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#seq"><span class="nav-number">5.1.</span> <span class="nav-text">seq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c风格for循环"><span class="nav-number">5.2.</span> <span class="nav-text">c风格for循环</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程控制"><span class="nav-number">6.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整数"><span class="nav-number">6.1.</span> <span class="nav-text">整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">6.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">6.3.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑操作"><span class="nav-number">6.4.</span> <span class="nav-text">逻辑操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case"><span class="nav-number">6.5.</span> <span class="nav-text">case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while"><span class="nav-number">6.6.</span> <span class="nav-text">while</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#死循环"><span class="nav-number">6.6.1.</span> <span class="nav-text">死循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭配重定向"><span class="nav-number">6.6.2.</span> <span class="nav-text">搭配重定向</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -705,6 +645,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
