@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="bash," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -89,16 +89,16 @@
 12currentFolder=`pwd`currentFolder=$(pwd)
 输入输出标准IOecho可类比c语言里面的printf，可以直">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bash常用总结">
-<meta property="og:url" content="http://gallenvara.cc/2016/12/02/bash-learning/index.html">
+<meta property="og:title" content="ustc橘子皮的博客">
+<meta property="og:url" content="http://gallenvara.cc/2016/12/03/变量/index.html">
 <meta property="og:site_name" content="ustc橘子皮的博客">
 <meta property="og:description" content="之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。
 变量shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。后者有两种方法：  
 12currentFolder=`pwd`currentFolder=$(pwd)
 输入输出标准IOecho可类比c语言里面的printf，可以直">
-<meta property="og:updated_time" content="2016-12-03T09:21:18.000Z">
+<meta property="og:updated_time" content="2016-12-03T09:16:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bash常用总结">
+<meta name="twitter:title" content="ustc橘子皮的博客">
 <meta name="twitter:description" content="之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。
 变量shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。后者有两种方法：  
 12currentFolder=`pwd`currentFolder=$(pwd)
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://gallenvara.cc/2016/12/02/bash-learning/"/>
+  <link rel="canonical" href="http://gallenvara.cc/2016/12/03/变量/"/>
 
 
 
 
 
-  <title> bash常用总结 | ustc橘子皮的博客 </title>
+  <title>  | ustc橘子皮的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://gallenvara.cc/2016/12/02/bash-learning/">
+  <link itemprop="mainEntityOfPage" href="http://gallenvara.cc/2016/12/03/变量/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="gallenvara">
@@ -281,7 +281,7 @@
             
             
               
-                bash常用总结
+                
               
             
           </h1>
@@ -294,8 +294,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T17:05:00+08:00">
-                2016-12-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T17:16:14+08:00">
+                2016-12-03
               </time>
             
 
@@ -337,8 +337,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;hello world&quot;</div></pre></td></tr></table></figure>
 <p>也可以在输出中混用变量。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a=&quot;world&quot;</div><div class="line">echo &quot;hello&quot; $a</div></pre></td></tr></table></figure>
-<p>加入参数<code>-n</code>可使输出不换行。  </p>
-<a id="more"></a>
+<p>加入参数<code>-n</code>可使输出不换行。</p>
 <h3 id="read"><a href="#read" class="headerlink" title="read"></a>read</h3><p>无需声明变量，直接读取。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">read a b</div></pre></td></tr></table></figure>
 <p>变量之间空格分隔，而非逗号。<br>加入参数<code>-p</code>可在输入之前打印一段信息。</p>
@@ -400,19 +399,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/bash/" rel="tag"># bash</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/02/sea-and-boat/" rel="next" title="一只船">
-                <i class="fa fa-chevron-left"></i> 一只船
+              <a href="/2016/12/02/thought-on-streaming/" rel="next" title="对流处理的一些思考">
+                <i class="fa fa-chevron-left"></i> 对流处理的一些思考
               </a>
             
           </div>
@@ -420,10 +413,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/02/thought-on-streaming/" rel="prev" title="对流处理的一些思考">
-                对流处理的一些思考 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
