@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="flink,metrics," />
 
 
 
@@ -84,27 +84,27 @@
 
 
 
-<meta name="description" content="Metrics in FlinkFlink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
+<meta name="description" content="Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
 GaugeMeterCounterHistogram   
 ##注册metrics
-###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化">
+###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过get">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ustc橘子皮的博客">
+<meta property="og:title" content="Metrics in Flink">
 <meta property="og:url" content="http://gallenvara.cc/2017/04/23/Metrics-in-Flink/index.html">
 <meta property="og:site_name" content="ustc橘子皮的博客">
-<meta property="og:description" content="Metrics in FlinkFlink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
+<meta property="og:description" content="Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
 GaugeMeterCounterHistogram   
 ##注册metrics
-###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化">
+###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过get">
 <meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png">
 <meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/metrics.png">
-<meta property="og:updated_time" content="2017-04-22T17:26:37.000Z">
+<meta property="og:updated_time" content="2017-04-22T17:35:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ustc橘子皮的博客">
-<meta name="twitter:description" content="Metrics in FlinkFlink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
+<meta name="twitter:title" content="Metrics in Flink">
+<meta name="twitter:description" content="Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
 GaugeMeterCounterHistogram   
 ##注册metrics
-###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化">
+###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过get">
 <meta name="twitter:image" content="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png">
 
 
@@ -139,7 +139,7 @@ GaugeMeterCounterHistogram
 
 
 
-  <title>  | ustc橘子皮的博客 </title>
+  <title> Metrics in Flink | ustc橘子皮的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -284,7 +284,7 @@ GaugeMeterCounterHistogram
             
             
               
-                
+                Metrics in Flink
               
             
           </h1>
@@ -297,7 +297,7 @@ GaugeMeterCounterHistogram
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-23T01:26:37+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-23T01:34:52+08:00">
                 2017-04-23
               </time>
             
@@ -333,12 +333,13 @@ GaugeMeterCounterHistogram
       
 
       
-        <h1 id="Metrics-in-Flink"><a href="#Metrics-in-Flink" class="headerlink" title="Metrics in Flink"></a>Metrics in Flink</h1><p>Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。<br>目前flink支持四种metrics指标，分别是：  </p>
+        <p>Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。<br>目前flink支持四种metrics指标，分别是：  </p>
 <p><strong>Gauge</strong><br><strong>Meter</strong><br><strong>Counter</strong><br><strong>Histogram</strong>   </p>
 <p>##注册metrics</p>
 <p>###Counter<br>flink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过getRuntimeContext().getMetricGroup()注册自定义的counter，代码如下所示，累加器每读取一条数据就会自增1.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMapper</span> <span class="keyword">extends</span> <span class="title">RichMapFunction</span>&lt;<span class="title">String</span>, <span class="title">Integer</span>&gt; </span>&#123;</div><div class="line">  <span class="keyword">private</span> Counter counter;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(Configuration config)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.counter = getRuntimeContext()</div><div class="line">      .getMetricGroup()</div><div class="line">      .counter(<span class="string">"myCounter"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@public</span> <span class="function">Integer <span class="title">map</span><span class="params">(String value)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    <span class="keyword">this</span>.counter.inc();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>同时，你也可以通过实现Counter接口定义自己的Counter从而实现自定的累加逻辑。</p>
+<p>同时，你也可以通过实现Counter接口定义自己的Counter从而实现自定的累加逻辑。   </p>
+<a id="more"></a>
 <h3 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h3><p>可以通过类似的方法注册histogram进行一段时间内某个参数的统计，在MetricGroup内通过构造函数histogram(String name，Histogram histogram)注册自定义的histogram。<br>flink本身没有实现默认的histogram，而是提供了针对 Codahale/DropWizard的wrapper。如果要利用它们，可以在pom中加入依赖：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;  </div><div class="line">      &lt;groupId&gt;org.apache.flink&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;flink-metrics-dropwizard&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;1.3-SNAPSHOT&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
 <p>然后在RichFunction中注册相应的histogram，如下：</p>
@@ -373,6 +374,14 @@ GaugeMeterCounterHistogram
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flink/" rel="tag"># flink</a>
+          
+            <a href="/tags/metrics/" rel="tag"># metrics</a>
+          
+        </div>
       
 
       
@@ -465,7 +474,7 @@ GaugeMeterCounterHistogram
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -500,7 +509,7 @@ GaugeMeterCounterHistogram
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Metrics-in-Flink"><span class="nav-number">1.</span> <span class="nav-text">Metrics in Flink</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">1.0.1.</span> <span class="nav-text">Histogram</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">1.</span> <span class="nav-text">Histogram</span></a></li></ol></div>
             
 
           </div>
