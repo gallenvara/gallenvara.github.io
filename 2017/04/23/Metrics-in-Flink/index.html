@@ -84,15 +84,28 @@
 
 
 
-<meta name="description" content="stay foolish, stay hungry.">
-<meta property="og:type" content="website">
+<meta name="description" content="Metrics in FlinkFlink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
+GaugeMeterCounterHistogram   
+##注册metrics
+###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ustc橘子皮的博客">
-<meta property="og:url" content="http://gallenvara.cc/index.html">
+<meta property="og:url" content="http://gallenvara.cc/2017/04/23/Metrics-in-Flink/index.html">
 <meta property="og:site_name" content="ustc橘子皮的博客">
-<meta property="og:description" content="stay foolish, stay hungry.">
+<meta property="og:description" content="Metrics in FlinkFlink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
+GaugeMeterCounterHistogram   
+##注册metrics
+###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化">
+<meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png">
+<meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/metrics.png">
+<meta property="og:updated_time" content="2017-04-22T17:26:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ustc橘子皮的博客">
-<meta name="twitter:description" content="stay foolish, stay hungry.">
+<meta name="twitter:description" content="Metrics in FlinkFlink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
+GaugeMeterCounterHistogram   
+##注册metrics
+###Counterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化">
+<meta name="twitter:image" content="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png">
 
 
 
@@ -120,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://gallenvara.cc/"/>
+  <link rel="canonical" href="http://gallenvara.cc/2017/04/23/Metrics-in-Flink/"/>
 
 
 
 
 
-  <title> ustc橘子皮的博客 </title>
+  <title>  | ustc橘子皮的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,9 +160,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +249,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -274,9 +285,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/23/Metrics-in-Flink/" itemprop="url">
-                  未命名
-                </a>
               
             
           </h1>
@@ -325,9 +333,7 @@
       
 
       
-        
-          
-            <h1 id="Metrics-in-Flink"><a href="#Metrics-in-Flink" class="headerlink" title="Metrics in Flink"></a>Metrics in Flink</h1><p>Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。<br>目前flink支持四种metrics指标，分别是：  </p>
+        <h1 id="Metrics-in-Flink"><a href="#Metrics-in-Flink" class="headerlink" title="Metrics in Flink"></a>Metrics in Flink</h1><p>Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。<br>目前flink支持四种metrics指标，分别是：  </p>
 <p><strong>Gauge</strong><br><strong>Meter</strong><br><strong>Counter</strong><br><strong>Histogram</strong>   </p>
 <p>##注册metrics</p>
 <p>###Counter<br>flink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过getRuntimeContext().getMetricGroup()注册自定义的counter，代码如下所示，累加器每读取一条数据就会自增1.</p>
@@ -348,16 +354,20 @@
 <p>在flink web ui中针对之前对不同operator设置的添加metrics信息进行展示，<br><img src="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png" alt="metrics_web_ui"></p>
 <p>添加完成后，大致的样子(现在metrics system做的还不是很完善，用户体验度一般，测试过程中metrics信息显示有一定的延迟，并且不能查看长时间的历史信息)，<br><img src="http://ohk0rbkrl.bkt.clouddn.com/metrics.png" alt="metrics"></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -366,393 +376,34 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://gallenvara.cc/2016/12/02/thought-on-streaming/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="gallenvara">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/12931563.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ustc橘子皮的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ustc橘子皮的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/02/thought-on-streaming/" rel="next" title="对流处理的一些思考">
+                <i class="fa fa-chevron-left"></i> 对流处理的一些思考
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/12/02/thought-on-streaming/" itemprop="url">
-                  对流处理的一些思考
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T17:25:52+08:00">
-                2016-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文作者：Kostas Tzoumas。原文：Stream Processing Myths Debunked。由InfoQ社区编辑薛命灯翻译。<a href="http://data-artisans.com/stream-processing-myths-debunked/">原文链接</a> <a href="http://www.weixinduba.com/n/570944">翻译链接</a></p>
-<p>我们在思考流处理问题上花了很多时间，更酷的是，我们也花了很多时间帮助其他人认识流处理，以及如何在他们的组织里应用流处理来解决数据问题。</p>
-<p>我们首先要做的是纠正人们对流处理（作为一个快速变化的领域，这里有很多误见值得我们思考）的错误认识。</p>
-<p>在这篇文章里，我们选出了其中的六个作为例子。因为我们对Apache Flink比较熟悉，所以我们会基于Flink来讲解这些例子。</p>
-<p><em>谬见1：没有不使用批处理的流（Lambda架构)</em></p>
-<p><em>谬见2：延迟和吞吐量：只能选择一个</em>  </p>
-<p><em>谬见3：微批次意味着更好的吞吐量</em>  </p>
-<p><em>谬见4：Exactly once？完全不可能</em>  </p>
-<p><em>谬见5：流只能被应用在“实时”场景里</em>  </p>
-<p><em>谬见6：不管怎么样，流仍然很复杂</em>  </p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/02/thought-on-streaming/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://gallenvara.cc/2016/12/02/bash-learning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="gallenvara">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/12931563.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ustc橘子皮的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ustc橘子皮的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/02/bash-learning/" itemprop="url">
-                  bash常用总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T17:05:00+08:00">
-                2016-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>之前没有系统的学习过shell，当时在做pxe时只写过一点简单的shell，时间过去太久也基本淡忘。在此总结一下，以后不定期更新。</p>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>shell中无需变量声明，可以直接赋值成用户自定义的值，也可以将调用系统命令的结果来给变量赋值。<br>后者有两种方法：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">currentFolder=`pwd`</div><div class="line">currentFolder=$(pwd)</div></pre></td></tr></table></figure>
-<h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><h2 id="标准IO"><a href="#标准IO" class="headerlink" title="标准IO"></a>标准IO</h2><h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>可类比c语言里面的printf，可以直接跟一条字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;hello world&quot;</div></pre></td></tr></table></figure>
-<p>也可以在输出中混用变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a=&quot;world&quot;</div><div class="line">echo &quot;hello&quot; $a</div></pre></td></tr></table></figure>
-<p>加入参数<code>-n</code>可使输出不换行。  </p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/02/bash-learning/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://gallenvara.cc/2016/12/02/sea-and-boat/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="gallenvara">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/12931563.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="ustc橘子皮的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="ustc橘子皮的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/02/sea-and-boat/" itemprop="url">
-                  一只船
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-02T04:12:03+08:00">
-                2016-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <center><br><img src="http://ohk0rbkrl.bkt.clouddn.com/boat-at-sea.jpg" alt="boat-and-sea"><br><br>一只船孤独地航行在海上<br>它既不寻求幸福，<br>也不逃避幸福。<br>它只是向前航行，<br>底下是沉静碧蓝的大海，<br>而头顶是金色的太阳。<br>将要直面的，<br>与已成过往的，<br>较之深埋于它内心的皆为微沫。<br></center>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -760,6 +411,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -779,8 +434,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/12931563.png"
@@ -826,6 +490,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Metrics-in-Flink"><span class="nav-number">1.</span> <span class="nav-text">Metrics in Flink</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">1.0.1.</span> <span class="nav-text">Histogram</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -924,6 +604,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
