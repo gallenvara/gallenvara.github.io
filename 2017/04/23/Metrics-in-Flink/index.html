@@ -96,7 +96,7 @@ GaugeMeterCounterHistogram
 注册MetricsCounterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过getRuntim">
 <meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png">
 <meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/metrics.png">
-<meta property="og:updated_time" content="2017-04-23T03:37:20.000Z">
+<meta property="og:updated_time" content="2017-04-23T03:41:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metrics in Flink">
 <meta name="twitter:description" content="Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
@@ -351,8 +351,43 @@ GaugeMeterCounterHistogram
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">metrics.reporters: grph</div><div class="line">metrics.reporter.grph.class: org.apache.flink.metrics.graphite.GraphiteReporter</div><div class="line">metrics.reporter.grph.host: localhost</div><div class="line">metrics.reporter.grph.port: 2003</div><div class="line">metrics.reporter.grph.protocol: TCP</div><div class="line"></div><div class="line">metrics.reporters: jmx</div><div class="line">metrics.reporter.jmx.class: org.apache.flink.metrics.jmx.JMXReporter</div><div class="line">metrics.reporter.jmx.port: 8789</div></pre></td></tr></table></figure>
 <h2 id="Metrics展示"><a href="#Metrics展示" class="headerlink" title="Metrics展示"></a>Metrics展示</h2><p>在flink web ui中针对之前对不同operator设置的添加metrics信息进行展示，<br><img src="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png" alt="metrics_web_ui"></p>
 <p>添加完成后，大致的样子(现在metrics system做的还不是很完善，用户体验度一般，测试过程中metrics信息显示有一定的延迟，并且不能查看长时间的历史信息)，还有一点说明，flink自带的metrics信息是单个TM的统计值，flink web ui中当用户点击某个TM界面时metrics回去响应http请求从而内部请求当前TM的metrics信息，这部分代码如下:   </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">			<span class="keyword">if</span> (jobManager != <span class="keyword">null</span>) &#123;</div><div class="line">				<span class="comment">// whether one task manager's metrics are requested, or all task manager, we</span></div><div class="line">				<span class="comment">// return them in an array. This avoids unnecessary code complexity.</span></div><div class="line">				<span class="comment">// If only one task manager is requested, we only fetch one task manager metrics.</span></div><div class="line">				<span class="keyword">final</span> List&lt;Instance&gt; instances = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">				<span class="keyword">if</span> (pathParams.containsKey(TASK_MANAGER_ID_KEY)) &#123;</div><div class="line">					<span class="keyword">try</span> &#123;</div><div class="line">						InstanceID instanceID = <span class="keyword">new</span> InstanceID(StringUtils.hexStringToByte(pathParams.get(TASK_MANAGER_ID_KEY)));</div><div class="line">						Future&lt;Object&gt; future = jobManager.ask(<span class="keyword">new</span> JobManagerMessages.RequestTaskManagerInstance(instanceID), timeout);</div><div class="line">						TaskManagerInstance instance = (TaskManagerInstance) Await.result(future, timeout);</div><div class="line">						<span class="keyword">if</span> (instance.instance().nonEmpty()) &#123;</div><div class="line">							instances.add(instance.instance().get());</div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">					<span class="comment">// this means the id string was invalid. Keep the list empty.</span></div><div class="line">					<span class="keyword">catch</span> (IllegalArgumentException e)&#123;</div><div class="line">						<span class="comment">// do nothing.</span></div><div class="line">					&#125;</div><div class="line">				&#125; <span class="keyword">else</span></div><div class="line">					&#123;</div><div class="line">					Future&lt;Object&gt; future = jobManager.ask(JobManagerMessages.getRequestRegisteredTaskManagers(), timeout);</div><div class="line">					RegisteredTaskManagers taskManagers = (RegisteredTaskManagers) Await.result(future, timeout);</div><div class="line">					instances.addAll(taskManagers.asJavaCollection());</div><div class="line">				&#125;</div><div class="line">```   </div><div class="line">接着，metrics会层级调用，具体流程为：   </div><div class="line"></div><div class="line">```   </div><div class="line">TaskManagerHandler--&gt;  </div><div class="line">	handleRequest--&gt;   </div><div class="line">		fetcher.update--&gt;   </div><div class="line">			fetcherMetrics--&gt;</div><div class="line">				queryMetrics(TM)--&gt;</div><div class="line">					MetricQueryService--&gt;</div><div class="line">						SerialiazeMetrics--&gt;</div><div class="line">							addMetrics--&gt;</div><div class="line">								metricStore--&gt;</div></pre></td></tr></table></figure>
-<p><img src="http://ohk0rbkrl.bkt.clouddn.com/metrics.png" alt="metrics"></p>
+<pre><code class="java">
+<span class="keyword">if</span> (jobManager != <span class="keyword">null</span>) {
+    <span class="comment">// whether one task manager's metrics are requested, or all task manager, we</span>
+    <span class="comment">// return them in an array. This avoids unnecessary code complexity.</span>
+    <span class="comment">// If only one task manager is requested, we only fetch one task manager metrics.</span>
+    <span class="keyword">final</span> List&lt;Instance&gt; instances = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    <span class="keyword">if</span> (pathParams.containsKey(TASK_MANAGER_ID_KEY)) {
+        <span class="keyword">try</span> {
+            InstanceID instanceID = <span class="keyword">new</span> InstanceID(StringUtils.hexStringToByte(pathParams.get(TASK_MANAGER_ID_KEY)));
+            Future&lt;Object&gt; future = jobManager.ask(<span class="keyword">new</span> JobManagerMessages.RequestTaskManagerInstance(instanceID), timeout);
+            TaskManagerInstance instance = (TaskManagerInstance) Await.result(future, timeout);
+            <span class="keyword">if</span> (instance.instance().nonEmpty()) {
+                instances.add(instance.instance().get());
+            }
+        }
+        <span class="comment">// this means the id string was invalid. Keep the list empty.</span>
+        <span class="keyword">catch</span> (IllegalArgumentException e){
+            <span class="comment">// do nothing.</span>
+        }
+    } <span class="keyword">else</span>
+        {
+        Future&lt;Object&gt; future = jobManager.ask(JobManagerMessages.getRequestRegisteredTaskManagers(), timeout);
+        RegisteredTaskManagers taskManagers = (RegisteredTaskManagers) Await.result(future, timeout);
+        instances.addAll(taskManagers.asJavaCollection());
+    }
+</code></pre>
+<p>接着，metrics会层级调用，具体流程为：   </p>
+<pre><code>TaskManagerHandler--&gt;  
+    handleRequest--&gt;   
+        fetcher.update--&gt;   
+            fetcherMetrics--&gt;
+                queryMetrics(TM)--&gt;
+                    MetricQueryService--&gt;
+                        SerialiazeMetrics--&gt;
+                            addMetrics--&gt;
+                                metricStore--&gt;
+</code></pre><p><img src="http://ohk0rbkrl.bkt.clouddn.com/metrics.png" alt="metrics"></p>
 
       
     </div>
