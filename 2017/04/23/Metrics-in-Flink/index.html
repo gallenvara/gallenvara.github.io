@@ -96,7 +96,7 @@ GaugeMeterCounterHistogram
 注册MetricsCounterflink中，注册metrics的方式是通过继承任意的RichFunction然后在open方法中注册并初始化自己的metrics，通过getRuntim">
 <meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png">
 <meta property="og:image" content="http://ohk0rbkrl.bkt.clouddn.com/metrics.png">
-<meta property="og:updated_time" content="2017-04-23T04:26:43.000Z">
+<meta property="og:updated_time" content="2017-04-23T04:34:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metrics in Flink">
 <meta name="twitter:description" content="Flink在1.0版本以后添加了metrics统计系统并可以和其他多种metrics工具结合使用。目前flink支持四种metrics指标，分别是：  
@@ -350,7 +350,7 @@ GaugeMeterCounterHistogram
 <p>后三者使用时需要将相应的jar放在flink的lib目录下，<br>在启动集群之前在conf/flink-conf.yaml中添加reporter的信息，可以设置多个reporter：   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">metrics.reporters: grph</div><div class="line">metrics.reporter.grph.class: org.apache.flink.metrics.graphite.GraphiteReporter</div><div class="line">metrics.reporter.grph.host: localhost</div><div class="line">metrics.reporter.grph.port: 2003</div><div class="line">metrics.reporter.grph.protocol: TCP</div><div class="line"></div><div class="line">metrics.reporters: jmx</div><div class="line">metrics.reporter.jmx.class: org.apache.flink.metrics.jmx.JMXReporter</div><div class="line">metrics.reporter.jmx.port: 8789</div></pre></td></tr></table></figure>
 <h2 id="Metrics展示"><a href="#Metrics展示" class="headerlink" title="Metrics展示"></a>Metrics展示</h2><p>在flink web ui中针对之前对不同operator设置的添加metrics信息进行展示，<br><img src="http://ohk0rbkrl.bkt.clouddn.com/web_ui.png" alt="metrics_web_ui"></p>
-<p>添加完成后，大致的样子(现在metrics system做的还不是很完善，用户体验度一般，测试过程中metrics信息显示有一定的延迟，并且不能查看长时间的历史信息)，还有一点说明，flink自带的metrics信息是单个TM的统计值，flink web ui中当用户点击某个TM界面时metrics会去响应http请求从而内部请求当前TM的metrics信息，这部分代码如下:   </p>
+<p>添加完成后，大致的样子(现在metrics system做的还不是很完善，用户体验度一般，测试过程中metrics信息显示有一定延迟，并且不能查看长时间的历史信息)，还有一点说明，flink自带的metrics信息是单个TM的统计值，flink web ui中当用户点击某个TM界面时metrics会去响应http请求从而内部请求当前TM的metrics信息，这部分代码如下:   </p>
 <pre><code class="java">
 <span class="keyword">if</span> (jobManager != <span class="keyword">null</span>) {
     <span class="comment">// whether one task manager's metrics are requested, or all task manager, we</span>
