@@ -21,7 +21,7 @@
 title: 一片橘子皮
 email: ustcgaolun@163.com
 description: >- # this means to ignore newlines until "baseurl:"
-  一只在Zoom当架构师的程序员，有个可爱的女儿，热爱生活，喜欢拍照、写诗、发呆。
+  一只在Zoom当架构师的程序员，有个可爱的女儿，在杭州，热爱生活，喜欢拍照、写诗、发呆。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
