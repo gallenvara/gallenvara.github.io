@@ -45,9 +45,6 @@ layout: base
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape}}
           </a>
-<!--          <a class="post-content">-->
-<!--            <h1 style="color: #000000;font-size: 18px;display: block">{{post.content}}</h1>-->
-<!--          </a>-->
           <style>
             .post-content {
               display: -webkit-box;
@@ -55,6 +52,8 @@ layout: base
               -webkit-box-orient: vertical;
               overflow: hidden;
               text-overflow: ellipsis;
+              white-space: normal; /* 强制换行 */
+              -webkit-text-overflow: ellipsis; /* 在WebKit浏览器中，如Safari和Chrome，需要这个属性 */
             }
           </style>
 
