@@ -45,21 +45,21 @@ layout: base
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape}}
           </a>
-          <style>
-            .post-content {
-              display: -webkit-box;
-              -webkit-line-clamp: 5;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: normal; /* 强制换行 */
-              -webkit-text-overflow: ellipsis; /* 在WebKit浏览器中，如Safari和Chrome，需要这个属性 */
-            }
-          </style>
+<!--          <style>-->
+<!--            .post-content {-->
+<!--              display: -webkit-box;-->
+<!--              -webkit-line-clamp: 5;-->
+<!--              -webkit-box-orient: vertical;-->
+<!--              overflow: hidden;-->
+<!--              text-overflow: ellipsis;-->
+<!--              white-space: normal; /* 强制换行 */-->
+<!--              -webkit-text-overflow: ellipsis; /* 在WebKit浏览器中，如Safari和Chrome，需要这个属性 */-->
+<!--            }-->
+<!--          </style>-->
 
-          <a class="post-content">
-            <h1 style="color: #000000;font-size: 16px;display: block">{{post.content}}</h1>
-          </a>
+<!--          <a class="post-content">-->
+<!--            <h1 style="color: #000000;font-size: 16px;display: block">{{post.content}}</h1>-->
+<!--          </a>-->
         </h3>
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
