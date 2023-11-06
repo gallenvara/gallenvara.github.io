@@ -18,8 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-#title: 一片橘子皮
-title: A Piece of Orange Peel
+title: 一片|橘子皮
+#title: A Piece of Orange Peel
 email: ustcgaolun@163.com
 description: >- # this means to ignore newlines until "baseurl:"
   一只在Zoom当架构师的程序员，在杭州，有个可爱的女儿，热爱生活，喜欢拍照、写诗、发呆。
